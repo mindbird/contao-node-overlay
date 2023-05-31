@@ -1,0 +1,28 @@
+<div id="ce_nodes_overlay" style="display: none">
+    <div class="inside">
+        <div class="close"><span>X</span></div>
+        {{ content | raw }}
+    </div>
+</div>
+<script type="text/javascript">
+    const untilDate = new Date('{{ untilDate }}');
+    const showOnlyOnce = {{ showOnlyOnce }};
+    const elementId = {{ elementId }};
+    const elementHash = '{{ elementHash }}';
+    const now = new Date();
+    document.addEventListener("DOMContentLoaded", () => {
+        const overlayElement = document.querySelector('#ce_nodes_overlay');
+        const closeElement = document.querySelector('#ce_nodes_overlay .close');
+        closeElement.addEventListener('click', function () {
+            overlayElement.style['display'] = 'none';
+        })
+
+        if (untilDate > now && showOnlyOnce === 0) {
+            overlayElement.style['display'] = 'block';
+        } else if (untilDate > now && showOnlyOnce === 1) {
+            const lastSeen = localStorage.getItem('ce_nodes_overview.' + elementId);
+            if (lastSeen !== elementHash) overlayElement.style['display'] = 'block';
+            localStorage.setItem('ce_nodes_overview.' + elementId, elementHash)
+        }
+    });
+</script>

@@ -1,0 +1,37 @@
+{
+    "name": "mindbird/contao-node-overlay",
+    "description": "Display a node element in an overlay.",
+    "type": "contao-bundle",
+    "require": {
+        "terminal42/contao-node": "^1.5",
+        "contao/core-bundle": "^4.13"
+    },
+    "conflict": {
+       "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0"
+    },
+    "license": "LGPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Mindbird\\ContaoNodeOverlay\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Florian Otto",
+            "email": "florian.otto@mindbird.de"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "php-http/discovery": true,
+            "contao/manager-plugin": true
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "Mindbird\\ContaoNodeOverlay\\ContaoManager\\Plugin"
+    }
+}
