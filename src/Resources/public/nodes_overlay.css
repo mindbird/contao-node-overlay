@@ -1,17 +1,41 @@
 #ce_nodes_overlay {
+    border: none;
+    background: transparent;
+}
+
+#ce_nodes_overlay .modal-overlay {
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(200,200,200,0.8);
-    padding: 4rem;
-    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 22;
 }
 
-#ce_nodes_overlay .inside {
-    background-color: #FFFFFF;
-    padding: 2rem;
+#ce_nodes_overlay .modal-container {
+    max-height: 90vh;
+    width: calc(100% - 2rem);
+    max-width: 800px;
+    position: relative;
+    padding: 0 1rem;
+}
+
+@media only screen and (max-width: 767px) {
+    #ce_nodes_overlay .modal-container {
+        max-height: 70vh;
+    }
+}
+
+#ce_nodes_overlay .modal-container > .inside {
+    background-color: #ffffff;
+    max-height: inherit;
+    overflow-y: auto;
+    max-width: 800px;
+    padding: 1rem;
 }
 
 #ce_nodes_overlay .close {
