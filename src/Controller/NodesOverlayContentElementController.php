@@ -7,9 +7,7 @@ use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
 use Contao\CoreBundle\Routing\ScopeMatcher;
-use Contao\FragmentTemplate;
 use Contao\StringUtil;
-use Contao\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Terminal42\NodeBundle\NodeManager;
@@ -25,7 +23,7 @@ class NodesOverlayContentElementController extends AbstractContentElementControl
 
     }
 
-    protected function getResponse(Template $template, ContentModel $model, Request $request): Response
+    protected function getResponse(\Contao\CoreBundle\Twig\FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
         if ($this->scopeMatcher->isBackendRequest($request)) {
             $template = new BackendTemplate('be_wildcard');
